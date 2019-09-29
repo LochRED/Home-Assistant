@@ -1,0 +1,45 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+
+# Tuya Smart Life
+tuya:
+  username: YOUR_PHONE/EMAIL
+  password: YOUR_PASSWORD
+  country_code: 1
+  platform: smart_life
+
+#Speedtestdotnet. Uses a TON of data. Do not enable unless scan_interval set high.
+# speedtestdotnet:
+ # scan_interval:
+  #  minutes: 1440
+ # monitored_conditions:
+   # - ping
+#    - download
+ #   - upload
+ 
+ # Dark Sky weather sensor
+sensor:
+  - platform: darksky
+    api_key: YOUR_API_KEY
+    forecast:
+      - 0
+    hourly_forecast:
+      - 0
+      - 1
+    monitored_conditions:
+      - summary
+      - icon
+      - temperature
